@@ -1,9 +1,10 @@
 FROM rocker/binder
 
 ## Copies your repo files into the Docker Container
-USER root
 COPY . ${HOME}
-RUN chown -R ${NB_USER} ${HOME}
+USER root
+RUN chown -R ${NB_UID} ${HOME}
+USER ${NB_USER}
 
 ## Become normal user again
 USER ${NB_USER}
